@@ -1,0 +1,49 @@
+                                            <!-- Display Time -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            flex-direction: column;
+        }
+        h2{
+            font-weight: 200;
+        }
+        #clock{
+            border-radius: 5px;
+            padding: 4px 8px;
+            background-color: lightsalmon;
+            height: 30px;
+            width: 80px;
+            color: aliceblue;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Local Time</h2>
+        <div id="clock"></div>
+    </div>
+</body>
+<script>
+    const clock = document.getElementById("clock");
+
+    // Repeating the same after every second using setInterval function
+    setInterval(function(){
+        let date = new Date();
+        clock.innerHTML = date.toLocaleTimeString()
+    }, 1000);
+</script>
+</html>

@@ -1,0 +1,66 @@
+                                        <!-- Background Switcher -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            position: absolute;
+            bottom: 20px;
+            left: 50%; 
+            transform: translateX(-50%); 
+            display: flex;
+            gap: 20px;
+        }
+        .div1{
+            height: 100px;
+            width: 100px;
+            background-color: lightslategray;
+            border: 2px solid black;
+        }
+        .div2{
+            height: 100px;
+            width: 100px;
+            background-color: white;
+            border: 2px solid black;
+        }
+        .div3{
+            height: 100px;
+            width: 100px;
+            background-color: lightcoral;
+            border: 2px solid black;
+        }
+        .div4{
+            height: 100px;
+            width: 100px;
+            background-color: lightgreen;
+            border: 2px solid black;
+        }
+        .div5{
+            height: 100px;
+            width: 100px;
+            background-color: lightskyblue;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="div1" onclick="changeBackground('grey')"></div>
+        <div class="div2" onclick="changeBackground('white')"></div>
+        <div class="div3" onclick="changeBackground('lightcoral')"></div>
+        <div class="div4" onclick="changeBackground('lightgreen')"></div>
+        <div class="div5" onclick="changeBackground('lightskyblue')"></div>
+    </div>
+</body>
+<script type="text/javascript">
+
+    function changeBackground(color){
+        document.body.style.backgroundColor = color;
+    }
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React{
+
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:3000"
+            // document.querySelector('button').addEventListener('click', this.handleClick)
+            // document.querySelector('button').addEventListener('click', () => this.handleClick())
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+        }
+
+        handleClick(){
+            console.log(this);
+            console.log("Button Clicked");
+            console.log(this.server);
+        }
+    }
+    const reactApp = new React();
+
+</script>
+</html>
+
+<!-- By this code 'this.handleClick' - `this` keyword refers to the button, this behavior is specified by the DOM Event handling mechanism due to which; this.server results in undefined as button does'nt have access to the server -->
+<!-- Our main aim is to point `this` keyword towards the React component -->
+
+<!-- SOLUTION - 1 -->
+<!--  () => this.handleClick(); an arrow function retains the context of the surrounding lexical scope. In this case, the lexical scope is the instance of the React class. Unlike regular functions, arrow functions do not have their own this context; instead, they inherit the this value from the enclosing scope. -->
+
+<!-- SOLUTION - 2 -->
+<!--  this.handleClick.bind(this); explicitly binds the this context of the handleClick method to the instance of the React class. -->
