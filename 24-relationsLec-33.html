@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+</body>
+
+<script>
+    const parent = document.querySelector('.parent');
+    console.log(parent); 
+    console.log(parent.children);
+    console.log(parent.children[0]);
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+    console.log("Nodes: ", parent.childNodes)     // actual nodes + line breaks
+
+    // Creating new element in DOM
+    const newDiv = document.createElement('div');
+    newDiv.style.color = 'pink';
+    newDiv.style.backgroundColor = 'black';
+    newDiv.style.padding = '5px';
+    newDiv.className = 'div';
+    // newDiv.innerText = 'New Div';
+    newDiv.appendChild(document.createTextNode("New Div"));
+    document.body.appendChild(newDiv);
+
+</script>
+
+</html>

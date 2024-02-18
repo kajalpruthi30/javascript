@@ -1,0 +1,95 @@
+<!-- Background Switcher -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+      }
+      #div1 {
+        height: 100px;
+        width: 100px;
+        background-color: lightslategray;
+        border: 2px solid black;
+      }
+      #div2 {
+        height: 100px;
+        width: 100px;
+        background-color: white;
+        border: 2px solid black;
+      }
+      #div3 {
+        height: 100px;
+        width: 100px;
+        background-color: lightcoral;
+        border: 2px solid black;
+      }
+      #div4 {
+        height: 100px;
+        width: 100px;
+        background-color: lightgreen;
+        border: 2px solid black;
+      }
+      #div5 {
+        height: 100px;
+        width: 100px;
+        background-color: lightskyblue;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="div1" class="lightslategray"></div>
+      <div id="div2" class="white"></div>
+      <div id="div3" class="lightcoral"></div>
+      <div id="div4" class="lightgreen"></div>
+      <div id="div5" class="lightskyblue"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+
+     function clickHandlerArrow(color){
+       document.body.style.backgroundColor = color;
+     }
+
+    //  To show that it is invoked immediately
+     function clickHandlerImmediate(color){
+       document.body.style.backgroundColor = color;
+      //  return () => document.body.style.backgroundColor = color;
+     }
+
+
+    // It returns the inner function which is not executed immediately. It is returned and stored as the event listener. 
+    // When the element is clicked, this stored function is then executed, changing the background color.
+     function clickHandler(color){
+       return function(){
+         document.body.style.backgroundColor = color;
+       }
+     }
+
+     
+     document.querySelector('.lightslategray').addEventListener('click', () => clickHandlerArrow('lightslategray'))
+     document.querySelector('.white').addEventListener('click', () => clickHandlerArrow('white'))
+     document.querySelector('.lightcoral').addEventListener('click', clickHandlerImmediate('lightcoral'))
+     document.querySelector('.lightgreen').addEventListener('click', clickHandler('lightgreen'))
+     document.querySelector('.lightskyblue').addEventListener('click', clickHandler('lightskyblue'))
+
+  </script>
+</html>
+
+<!-- A closure is created when an inner function has access to the outer function's variables, even after the outer function has finished executing. -->
+
+<!-- Arrow functions have lexical scoping for this, meaning they inherit the this value from their surrounding code. -->
+<!-- Regular functions have their own this context, which is determined by how they are called. It invoked automatically -->

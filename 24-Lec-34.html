@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="language">
+        <li>Javscript</li>
+    </ul>
+
+    <Script>
+        // 1. ADDING
+        // want to add more language i.e. list items in that ul
+        function addLanguage(languageName){
+            const li = document.createElement('li');
+            li.innerHTML = languageName;
+            document.querySelector('.language').appendChild(li);
+        }
+        // problem :- Whole Tree Traversing
+        addLanguage("Python");
+        addLanguage("React");
+
+
+        // Optimized approach
+        function optimizedAddLanguage(languageName){
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(languageName))
+            document.querySelector('.language').appendChild(li);
+        }
+        // problem :- Whole Tree Traversing
+        optimizedAddLanguage("Java");
+        optimizedAddLanguage("TypeScript");
+
+
+
+        // 2. Edit
+        const secondLanguage = document.querySelector("li:nth-child(3)")
+        // Unoptimised approach -> secondLanguage.innerHTML = "Ruby"
+        // Unoptimised approach -> secondLanguage.outerHTML = "<li>Ruby</li>"
+
+        // Optimised approach
+        const newLanguage = document.createElement('li');
+        newLanguage.appendChild(document.createTextNode("Ruby"))
+        
+        secondLanguage.replaceWith(newLanguage);
+
+
+
+        // 3. Remove
+        const removeLanguage = document.querySelector("li:nth-child(5)")
+        removeLanguage.remove();
+    </script>
+
+    </Script>
+</body>
+</html>

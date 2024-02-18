@@ -1,0 +1,72 @@
+                                                <!-- BMI Calculator  -->`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-direction: column;
+        }
+        input{
+            margin: 10px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+<body>
+        <div class="container">
+            <h1>BMI Calculator</h1>
+            <form>
+                <label>Height in cms: </label>
+                <input type="text" class="height"><br>
+                <label>Weight in kgs: </label>
+                <input type="text" class="weight"><br><br>
+                <button type="submit">Calculate</button>
+            </form>
+            <h2>Your BMI is: <span id="bmi"></span></h2><br>
+            <div id="result"></div>
+        </div>
+</body>
+<script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            const height = parseInt(document.querySelector('.height').value);
+            const weight = parseInt(document.querySelector('.weight').value);
+            calculateBMI(height, weight);
+        });
+
+        function calculateBMI(height, weight){
+
+            const bmiValue = document.querySelector('#bmi');
+            const result = document.querySelector('#result');
+
+            if(!height || !weight || height == 0 || weight == 0) {
+                return result.innerHTML = "Please enter a valid number for both fields.";
+            }
+
+            const bmi = (weight / ((height * height)/10000)).toFixed(2);
+            bmiValue.innerHTML = bmi;
+
+            if(bmi < 18.5){
+                result.innerHTML = "You're underweight"
+            }
+            else if(bmi > 18.5 && bmi < 24.9){
+                result.innerHTML = "You're healthy"
+            }
+            else{
+                result.innerHTML = "You're overweight"
+            }
+        }
+</script>
+</html>

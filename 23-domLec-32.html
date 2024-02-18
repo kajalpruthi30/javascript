@@ -1,0 +1,58 @@
+<!-- getAttribute -->
+<!-- setAttribute -->
+<!-- query selector -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <h1 id="title">Hello <span style="display: none;">World!</span></h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+
+        <ul>
+            <li class="list-item">Item 1</li>
+            <li class="list-item">Item 2</li>
+            <li class="list-item">Item 3</li>
+            <li class="list-item">Item 4</li>
+        </ul>
+    </div>
+</body>
+<script>
+    const title = document.getElementById('title');
+    // 1. The answer is different only in case of Id, answer will be same if class is chosen
+    console.log(title.innerHTML);
+    console.log(title.textContent);
+    console.log(title.innerText);
+
+    // 2. works only on first child
+    const para = document.querySelector('p');
+    para.style.color = 'red'
+
+    // 3. query selector all, returns a nodeList but it is not an array
+    const nodeList = document.querySelectorAll('p');
+    console.log(nodeList);
+    nodeList[1].style.color = 'green'
+
+        // * to implement querySelector to all the paragraph
+        nodeList.forEach((i) => i.style.color = 'blue')
+
+
+    // 4. All the elements with same class or same id cannot be accessed directly, as it results in a HTMLCollection
+    const HtmlCollection = document.getElementsByClassName('list-item');
+    HtmlCollection[0].style.color = 'yellow'
+    console.log(HtmlCollection);
+
+        // * to implement to all with same class or same id, firstly convert into array
+        const collectionArray = Array.from(HtmlCollection)
+        collectionArray.forEach((i) => i.style.color ='red')
+
+</script>
+</html>

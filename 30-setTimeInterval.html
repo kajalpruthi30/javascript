@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <button id="startTimeout">Start Timeout</button>
+    <button id="stopTimeout">Stop Timeout</button>
+    <br><br>
+    <button id="startInterval">Start Interval</button>
+    <button id="stopInterval">Stop Interval</button>
+</body>
+<script>
+
+    // 1. Set Time Out - It takes a handler (function reference) and a timeout
+    setTimeout(function(){
+        console.log("Kajal")
+    }, 2000)
+
+    const changeText = function(){
+        document.querySelector("h1").innerHTML = "Hello Dunia!"
+    }
+
+    const updateText = setTimeout(changeText, 2000);
+
+    document.querySelector('#stopTimeout').addEventListener("click", function(){
+        clearTimeout(updateText)
+    })
+
+
+    // 2. Set Interval
+
+    const sayTime = function(){
+        const date = new Date();
+        console.log(date);
+    }
+
+    let showTime;
+    document.querySelector('#startInterval').addEventListener("click", function(){
+        showTime = setInterval(sayTime, 2000);
+    })  
+
+    document.querySelector('#stopInterval').addEventListener("click", function(){
+        clearInterval(showTime);
+    })
+    
+
+</script>
+</html>
